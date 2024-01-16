@@ -67,10 +67,11 @@ def weeding(answer): # 제초
                 max_weeded_column = column
     #제초될 곳을 결정했음!
     answer += max_weeded
+    main_map[max_weeded_row][max_weeded_column] = -2 - weeding_period
     for d in range(4): # 제초 방향
         for r in range(weeding_range):
-            next_col = column + dx2[d]*(r+1)
-            next_row = row + dy2[d]*(r+1)
+            next_col = max_weeded_column + dx2[d]*(r+1)
+            next_row = max_weeded_row + dy2[d]*(r+1)
             if (next_col < 0 or next_col >= size or next_row < 0 or next_row >= size):
                 break
             elif(main_map[next_row][next_col] < 1 ): #index조건 먼저 체크해야 out of range 오류 안생김
