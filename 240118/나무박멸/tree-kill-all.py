@@ -80,8 +80,9 @@ def weeding(answer): # 제초
             next_row = max_weeded_row + dy2[d]*(r+1)
             if (next_col < 0 or next_col >= size or next_row < 0 or next_row >= size):
                 break
-            elif(main_map[next_row][next_col] < 1 ): #index조건 먼저 체크해야 out of range 오류 안생김
-                main_map[next_row][next_col] = -2 - weeding_period
+            elif(main_map[next_row][next_col] < 1): #index조건 먼저 체크해야 out of range 오류 안생김
+                if(main_map[next_row][next_col]!= -1):
+                    main_map[next_row][next_col] = -2 - weeding_period
                 break
             if( main_map[next_row][next_col] > 0):            
                 main_map[next_row][next_col] = -2 - weeding_period
