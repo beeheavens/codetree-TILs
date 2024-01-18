@@ -61,8 +61,8 @@ def weeding(answer): # 제초
     max_weeded = 0
     max_weeded_row = 0
     max_weeded_column = 0
-    for column in range(size):
-        for row in range(size):
+    for row in range(size):
+        for column in range(size):
             if (max_weeded < weed_map[row][column]):
                 max_weeded = weed_map[row][column]
                 max_weeded_row = row
@@ -71,8 +71,10 @@ def weeding(answer): # 제초
     answer += max_weeded
     if(max_weeded == 0):
         return answer
+    #print(main_map)
     #print(max_weeded_row)
     #print(max_weeded_column)
+    #print(max_weeded)
     main_map[max_weeded_row][max_weeded_column] = -2 - weeding_period
     for d in range(4): # 제초 방향
         for r in range(weeding_range):
