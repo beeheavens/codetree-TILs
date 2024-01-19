@@ -114,7 +114,7 @@ for i in range(total_round):
 
 # 준비완료
 for l in range(total_round):
-    attack(attack_data[0][0],attack_data[0][1])
+    attack(attack_data[l][0],attack_data[l][1])
     low_dim = lower_dim()
     empty_deletion(low_dim)
     low_dim = four_deletion(low_dim)
