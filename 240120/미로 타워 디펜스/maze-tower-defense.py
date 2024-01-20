@@ -127,9 +127,7 @@ for l in range(total_round):
         returned_arr = returned_arr[0:map_size*map_size]
     returned_arr = list(reversed(returned_arr))
     upper_dim(returned_arr)
-    for i in main_map:
-        print(i)
-    print(" ")
+
 
 
 print(ans)
