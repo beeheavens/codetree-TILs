@@ -55,6 +55,7 @@ def four_deletion(one_dim_arr): #4번 이상 중복 삭제
                 cont += 1
         if(flag == 0):
             break
+    del one_dim_arr[len(one_dim_arr)-1]
     return one_dim_arr
 
 def make_monster(one_dim_arr):
