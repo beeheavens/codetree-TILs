@@ -119,15 +119,16 @@ for l in range(total_round):
     attack(attack_data[l][0],attack_data[l][1])
     low_dim = lower_dim()
     empty_deletion(low_dim)
+
     low_dim = four_deletion(low_dim)
     returned_arr = make_monster(list(reversed(low_dim)))
+
     while(len(returned_arr) < map_size*map_size - 1):
         returned_arr.append(0)
     if(len(returned_arr)>=map_size*map_size):
-        returned_arr = returned_arr[0:map_size*map_size]
+        returned_arr = returned_arr[0:map_size*map_size-1]
     returned_arr = list(reversed(returned_arr))
     upper_dim(returned_arr)
-
 
 
 print(ans)
