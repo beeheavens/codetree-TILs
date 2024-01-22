@@ -1,60 +1,4 @@
 #3:30~
-def roll_dice(current, direction):
-    if(current == 1):
-        if(direction == 0):
-            return 4
-        if(direction == 1):
-            return 2
-        if(direction == 2):
-            return 3
-        if(direction == 3):
-            return 5
-    if(current == 2):
-        if(direction == 0):
-            return 1
-        if(direction == 1):
-            return 4
-        if(direction == 2):
-            return 6
-        if(direction == 3):
-            return 3
-    if(current == 3):
-        if(direction == 0):
-            return 1
-        if(direction == 1):
-            return 2
-        if(direction == 2):
-            return 6
-        if(direction == 3):
-            return 5
-    if(current == 4):
-        if(direction == 0):
-            return 1
-        if(direction == 1):
-            return 5
-        if(direction == 2):
-            return 6
-        if(direction == 3):
-            return 2
-    if(current == 5):
-        if(direction == 0):
-            return 3
-        if(direction == 1):
-            return 6
-        if(direction == 2):
-            return 4
-        if(direction == 3):
-            return 1
-    if(current == 6):
-        if(direction == 0):
-            return 3
-        if(direction == 1):
-            return 2
-        if(direction == 2):
-            return 4
-        if(direction == 3):
-            return 5
-
 
 def dfs(start_y,start_x,num):
     stack = []
@@ -89,6 +33,11 @@ for i in range(map_size):
     temp_arr = list(map(int,input().split()))
     main_map.append(temp_arr)
 dice = 6
+dice_e = 3
+dice_s = 2
+dice_w = 4
+dice_n = 5
+dice_opp = 1
 dx = [1,0,-1,0] # direction : e s w n
 dy = [0,1,0,-1]
 direction = 0
@@ -107,7 +56,28 @@ for i in range(total_round):
     position_x += dx[direction]
     position_y += dy[direction]
     ans += dfs(position_y,position_x,main_map[position_y][position_x])
-    dice = roll_dice(dice,direction)
+    if(direction == 0): # east
+        dice = dice_e
+        dice_e = dice_opp
+        dice_opp = dice_w
+        dice_w = 7 - dice_e
+    if(direction == 1): # south
+        dice = dice_s
+        dice_s = dice_opp
+        dice_opp = dice_n
+        dice_n = 7 - dice_s
+    if(direction == 2): # west
+        dice = dice_w
+        dice_w = dice_opp
+        dice_opp = dice_e
+        dice_e = 7 - dice_w
+    if(direction == 3): # north
+        dice = dice_n
+        dice_n = dice_opp
+        dice_opp = dice_s
+        dice_s = 7 - dice_n
+        
+
     if(dice > main_map[position_y][position_x]):
         direction = (direction+1)%4
     if(dice < main_map[position_y][position_x]):
