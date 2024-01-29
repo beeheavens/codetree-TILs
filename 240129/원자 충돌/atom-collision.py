@@ -2,13 +2,13 @@ def move():
     for i in atom_data:
         i[0] += i[3]*dy[i[4]]
         i[1] += i[3]*dx[i[4]]
-        if(i[0]<1):
+        if(i[0]<0):
             i[0] += map_size
-        elif(i[0]>map_size):
+        elif(i[0]>=map_size):
             i[0] -= map_size
-        if(i[1]<1):
+        if(i[1]<0):
             i[0] += map_size
-        elif(i[1]>map_size):
+        elif(i[1]>=map_size):
             i[0] -= map_size
 
 def synthesis():
@@ -63,6 +63,8 @@ atom_data = []
 for i in range(atom_num):
     temp = []
     temp = list(map(int,input().split()))
+    temp[0] -= 1
+    temp[1] -= 1
     atom_data.append(temp)
 
 dx = [0,1,1,1,0,-1,-1,-1]
