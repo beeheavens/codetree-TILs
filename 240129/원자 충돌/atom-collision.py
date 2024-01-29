@@ -7,9 +7,9 @@ def move():
         while(i[0]>=map_size):
             i[0] -= map_size
         while(i[1]<0):
-            i[0] += map_size
+            i[1] += map_size
         while(i[1]>=map_size):
-            i[0] -= map_size
+            i[1] -=  map_size
 
 def synthesis():
     atom_map = [[[] for i in range(map_size)] for j in range(map_size)] # 질량 속력 방향
