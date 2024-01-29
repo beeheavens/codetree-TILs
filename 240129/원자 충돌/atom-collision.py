@@ -20,7 +20,7 @@ def synthesis():
     for i in range(map_size):
         for j in range(map_size):
             if(len(atom_map[i][j])==1):
-                ret.append(atom_map[i][j][0])
+                ret.append(atom_data[atom_map[i][j][0]])
             if (len(atom_map[i][j]) > 1):
                 mass= 0
                 velocity = 0
