@@ -33,15 +33,17 @@ def bomb_set(): #폭탄 꾸러미를 만드는 함수
                             temp.append(data)
                             break
                     temp.append(red_bomb)
+                    temp.append(len(bomb_set))
                     set_ret.append(temp)
     return set_ret
 
 def del_bomb():
-    check_list.sort(key=lambda x :(-x[1], -x[0][0],-x[0][1]))
+    check_list.sort(key=lambda x :(-x[2],-x[1], -x[0][0],-x[0][1]))
     point = check_list[0][0] # 터트릴 폭탄 기준점
     bfs = [point]
     color = main_map[point[0]][point[1]]
-    score = 1
+    score = 0
+    path = [[bfs[0][0],bfs[0][1]]]
     while(len(bfs) > 0):
         cur_y = bfs[0][0]
         cur_x = bfs[0][1]
@@ -49,11 +51,13 @@ def del_bomb():
         for i in range(4):
             next_y = cur_y + dy[i]
             next_x = cur_x + dx[i]
-            if(0<=next_x<map_size and 0<=next_y<map_size):
-                if(main_map[next_y][next_x] == color or main_map[next_y][next_x] == 0):
-                    bfs.append([next_y,next_x])
-                    score += 1
+            if(0<=next_x and next_x<map_size and 0<=next_y and next_y<map_size):
+                if(main_map[next_y][next_x] == color or main_map[next_y][next_x] == 0 ):
+                    if([next_y,next_x] not in path and [next_y,next_x] not in bfs):
+                        bfs.append([next_y,next_x])
+                        path.append([next_y,next_x])
         del bfs[0]
+        score += 1
     return score*score
 
 def gravity():
@@ -64,7 +68,6 @@ def gravity():
                     if(main_map[k][j]== -1): #돌이면
                         break
                     if(main_map[k][j] > -1):
-                        
                         main_map[i][j] = main_map[k][j]
                         main_map[k][j] = -2
                         break
