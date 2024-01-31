@@ -38,7 +38,9 @@ def bomb_set(): #폭탄 꾸러미를 만드는 함수
     return set_ret
 
 def del_bomb():
-    check_list.sort(key=lambda x :(-x[2],-x[1], -x[0][0],-x[0][1]))
+    check_list.sort(key=lambda x :(-x[2],x[1], -x[0][0],x[0][1]))
+    #print(check_list)
+    #print("-----")
     point = check_list[0][0] # 터트릴 폭탄 기준점
     bfs = [point]
     color = main_map[point[0]][point[1]]
