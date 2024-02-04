@@ -8,7 +8,7 @@ def catch(pos):
             mold_data[idx][4] = -100
             main_map[i][pos] = 0
             return value
-               
+
     return 0
 
 def move():
@@ -65,6 +65,7 @@ for i in range(mold_num):
     temp = list(map(int,input().split()))
     temp[0] -= 1
     temp[1] -= 1
+    temp[3] -= 1
     mold_data.append(temp)
 
 for idx, data in enumerate(mold_data):
