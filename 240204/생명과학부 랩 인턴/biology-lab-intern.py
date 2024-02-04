@@ -2,17 +2,19 @@ def catch(pos):
     for i in range(n):
         if(main_map[i][pos]!=0):
             idx = main_map[i][pos] - 1
+            if(mold_data[idx]==-100):
+                continue
             value = mold_data[idx][4]
-            del [idx]
+            mold_data[idx][4] = -100
             main_map[i][pos] = 0
             return value
-            
-            
+               
     return 0
 
 def move():
     for idx, data in enumerate(mold_data):
-        direction = data[3]-1
+        if(data[4]==-100) : continue
+        direction = data[3]
         for i in range(data[2]):
             next_y = data[0] + dy[direction]
             next_x = data[1] + dx[direction]
@@ -35,6 +37,7 @@ def eat():
         for j in range(m):
             main_map[i][j] = 0
     for idx, data in enumerate(mold_data):
+        if(data[4]==-100): continue
         y = data[0]
         x = data[1]
         if(main_map[y][x]==0):
@@ -43,12 +46,13 @@ def eat():
             prev_idx = main_map[y][x]-1
             if(mold_data[prev_idx][4]<data[4]):
                 main_map[y][x] = idx+1
-    ret_data = []
+                mold_data[prev_idx][4] = -100
+    """ret_data = []
     for i in range(n):
         for j in range(m):
             if(main_map[i][j]!=0):
                 ret_data.append(mold_data[main_map[i][j]-1])
-    return ret_data
+    return ret_data"""
 
 #### main ####
 n,m,mold_num = map(int,input().split())
@@ -75,6 +79,6 @@ ans = 0
 for i in range(m):
     ans += catch(i)
     move()
-    mold_data = eat()
+    eat()
 
 print(ans)
