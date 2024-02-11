@@ -61,6 +61,7 @@ def pac_move():
                 values.append([eaten_monsters,a,b,c])
     values.sort(key=lambda x:(-x[0],x[1],x[2],x[3]))
     final_move = values[0]
+    
     ret_monsters = []
     first_y = cur_y + p_dy[final_move[1]]
     first_x = cur_x + p_dx[final_move[1]]
@@ -68,6 +69,8 @@ def pac_move():
     second_x = first_x + p_dx[final_move[2]]
     third_y = second_y + p_dy[final_move[3]]
     third_x = second_x + p_dx[final_move[3]]
+    pac_pos[0] = third_y
+    pac_pos[1] = third_x
     for monsters in monster_data:
         mon_y = monsters[0]
         mon_x = monsters[1]
@@ -123,5 +126,6 @@ for i in range(turn_num):
     monster_data = pac_move()
     dead_monsters = vanish_dead()
     egg_data = duplicate()
+    
 
 print(len(monster_data))
