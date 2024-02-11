@@ -92,7 +92,7 @@ def vanish_dead():
         data[2] -= 1
     ret_arr = []
     for data in dead_monsters:
-        if(data[2] == 0):
+        if(data[2] == -1):
             continue
         ret_arr.append(data)
     return ret_arr            
@@ -126,6 +126,7 @@ for i in range(turn_num):
     monster_data = pac_move()
     dead_monsters = vanish_dead()
     egg_data = duplicate()
+
     
 
 print(len(monster_data))
