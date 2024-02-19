@@ -19,7 +19,7 @@ def shortest_path():
             for i in range(4):
                 next_y = cur_y + dy[i]
                 next_x = cur_x + dx[i]
-                if(0<=next_y<map_size and 0<=next_x<map_size and main_map[next_y][next_x]!= 1 and distance_map[next_y][next_x]==0):
+                if(0<=next_y<map_size and 0<=next_x<map_size and main_map[next_y][next_x]!= 1 and distance_map[next_y][next_x]==0 and [next_y,next_x] not in temp):
                     if(next_y == car_y and next_x==car_x):
                         continue
                     else:
