@@ -65,7 +65,7 @@ def move():
 def move_dest(index):
     dest_y = person_data[index][2]
     dest_x = person_data[index][3]
-    if(car[2] < distance[dest_y][dest_x]):
+    if(car[2] < distance[dest_y][dest_x] or distance[dest_y][dest_x]==0):
         return -1
     else:
         car[0] = dest_y
@@ -110,6 +110,5 @@ while(len(person_data)>0):
         print("-1")
         flag = 1
         break
-
 if(flag != 1):
     print(car[2])
