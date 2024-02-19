@@ -51,7 +51,7 @@ def move():
                     min_dis = distance[person_y][person_x]
                     index = idx
     #이제 index 변수는 최단 거리 사람의 person data 내 idx값임
-    if(min_dis == 0): #못가는 경우
+    if(min_dis==0 and [car[0],car[1]] != [person_data[index][0],person_data[index][1]]):
         return -1
     if(min_dis>car[2]): #배터리가 없어서 못가는 경우
         return -1
