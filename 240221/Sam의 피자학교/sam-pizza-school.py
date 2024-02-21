@@ -22,7 +22,7 @@ def roll_dough():
     if(len(dough)>1): # 한줄이 아닌 경우
         len_upper_dough = len(dough[0])
     #말기 가능한지 체크
-    if(len(dough) > len(dough[len(dough)-1]) - len(dough)):
+    if(len(dough) > len(dough[len(dough)-1]) - len(dough) + 1):
         return -1
     #도우가 한줄인 경우
     if(len_upper_dough==0):
