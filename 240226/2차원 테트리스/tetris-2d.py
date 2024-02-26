@@ -104,6 +104,16 @@ def boom():
             yellow_table.insert(0,[0,0,0,0])
             score += 1
     for i in range(5,-1,-1):
+        if(yellow_table[i][0]==1 and yellow_table[i][1]==1 and yellow_table[i][2]==1 and yellow_table[i][3]==1): #한 줄이 채워지는 경우
+            del yellow_table[i]
+            yellow_table.insert(0,[0,0,0,0])
+            score += 1
+    for i in range(5,-1,-1):
+        if(red_table[i][0]==1 and red_table[i][1]==1 and red_table[i][2]==1 and red_table[i][3]==1): #한 줄이 채워지는 경우
+            del red_table[i]
+            red_table.insert(0,[0,0,0,0])
+            score += 1
+    for i in range(5,-1,-1):
         if(red_table[i][0]==1 and red_table[i][1]==1 and red_table[i][2]==1 and red_table[i][3]==1): #한 줄이 채워지는 경우
             del red_table[i]
             red_table.insert(0,[0,0,0,0])
@@ -150,7 +160,9 @@ for i in blocks:
     put(i)
     boom()
     push()
-
+    #for j in yellow_table:
+    #    print(j)
+    #print("-------")
 print(score)
 checker = 0
 for i in range(6):
