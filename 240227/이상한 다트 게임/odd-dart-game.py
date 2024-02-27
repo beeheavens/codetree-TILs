@@ -6,8 +6,8 @@ def rotate(data):
         if((idx+1)%rotate_type==0): #부합하는 원일 경우
             if(direction == 0): #시계 방향
                 for i in range(distance):
-                    circle_data[idx].insert(0,circle_data[idx][len(circle_data)-1]) #마지막을 앞으로 붙이고
-                    del circle_data[idx][len(circle_data)-1] #마지막을 지우기
+                    circle_data[idx].insert(0,circle_data[idx][len(circle_data[idx])-1]) #마지막을 앞으로 붙이고
+                    del circle_data[idx][len(circle_data[idx])-1] #마지막을 지우기
             elif(direction == 1): #반시계 방향
                 for i in range(distance):
                     circle_data[idx].append(circle_data[idx][0])
