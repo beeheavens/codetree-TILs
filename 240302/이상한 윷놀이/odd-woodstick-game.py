@@ -32,20 +32,23 @@ def move():
                     direction = 2
                 next_y = y + dy[direction]
                 next_x = x + dx[direction]
-                if(color_map[next_y][next_x] == 0): #흰색 판
-                    for i in units:
-                        unit_map[next_y][next_x].append(i)
-                        unit_data[i-1][0] = next_y
-                        unit_data[i-1][1] = next_x
-                    unit_map[y][x] = unit_map[y][x][:cur_position.index(idx+1)]
-                elif(color_map[next_y][next_x] == 1) : #빨간색 판
-                    units.reverse()
-                    for i in units:
-                        unit_map[next_y][next_x].append(i)
-                        unit_data[i-1][0] = next_y
-                        unit_data[i-1][1] = next_x
-                    unit_map[y][x] = unit_map[y][x][:cur_position.index(idx+1)]
-                elif(color_map[next_y][next_x]==2 or next_y < 0 or next_y>=map_size or next_x<0 or next_x >= map_size):
+                if(0<=next_y<map_size and 0<=next_x<map_size):
+                    if(color_map[next_y][next_x] == 0): #흰색 판
+                        for i in units:
+                            unit_map[next_y][next_x].append(i)
+                            unit_data[i-1][0] = next_y
+                            unit_data[i-1][1] = next_x
+                        unit_map[y][x] = unit_map[y][x][:cur_position.index(idx+1)]
+                    elif(color_map[next_y][next_x] == 1) : #빨간색 판
+                        units.reverse()
+                        for i in units:
+                            unit_map[next_y][next_x].append(i)
+                            unit_data[i-1][0] = next_y
+                            unit_data[i-1][1] = next_x
+                        unit_map[y][x] = unit_map[y][x][:cur_position.index(idx+1)]
+                    elif(color_map[next_y][next_x] == 2): #파란색 판
+                        pass
+                elif(next_y < 0 or next_y>=map_size or next_x<0 or next_x >= map_size):
                     pass
                 unit_data[idx][2] = direction
         elif(next_y < 0 or next_y>=map_size or next_x<0 or next_x >= map_size): #튀어나감
