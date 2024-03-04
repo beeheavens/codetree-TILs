@@ -48,9 +48,37 @@ def cal(data):
                     tribe_map[k][q] = 1
                 elif(tribe_map[k][q]==1 and flag ==1 ):
                     flag = 0
+        for k in range(third[0]):
+            tribe_map[k][third[1]] = 2
+        for k in range(fourth[1]):
+            tribe_map[fourth[0]][k] = 4
+        for k in range(second[1]+1,map_size):
+            tribe_map[second[0]][k] = 3
+        for k in range(first[0]+1,map_size):
+            tribe_map[k][first[1]] = 5
+        
+
         left_flag = 2
         right_flag = 3
         for k in range(map_size):
+            if(k== fourth[0]):
+                left_flag = 4
+            if(k == second[0]+1):
+                right_flag = 5
+            flag = 0
+            for q in range(map_size):
+                
+                if(tribe_map[k][q] == 0 and flag == 0): #왼편
+                    tribe_map[k][q]= left_flag
+                elif(tribe_map[k][q] == 0 and flag == 1):
+                    tribe_map[k][q] = right_flag
+                elif(tribe_map[k][q]!= 0):
+                    flag = 1
+            
+
+
+        '''for k in range(map_size):
+            flag = 0
             for q in range(map_size):
                 if(tribe_map[k][q] == 0):
                     if(k<third[0] and q <= third[1]):
@@ -64,7 +92,7 @@ def cal(data):
                     elif(fourth[0]<=k and q<first[1]):
                         tribe_map[k][q] = 4
                     else:
-                        tribe_map[k][q] = 5
+                        tribe_map[k][q] = 5'''
         for k in range(map_size):
             for q in range(map_size):
                 population[tribe_map[k][q]-1] += main_map[k][q]
@@ -72,9 +100,7 @@ def cal(data):
             min_diff = max(population) -min(population)
         elif(min_diff > max(population)-min(population)):
             min_diff = max(population) - min(population)
-            if(min_diff==30):
-                for mm in tribe_map:
-                    print(mm)
+                
         
     return min_diff
                     
