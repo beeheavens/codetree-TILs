@@ -27,14 +27,27 @@ def cal(data):
         second = i[1]
         third = i[2]
         fourth = i[3]
-        for k in range(map_size):
-            for q in range(map_size):
-                if(third[0]<k<first[0] and fourth[1]<q<second[1]):
-                    tribe_map[k][q] = 1
         tribe_map[first[0]][first[1]] = 1
         tribe_map[second[0]][second[1]]=1
         tribe_map[third[0]][third[1]] = 1
         tribe_map[fourth[0]][fourth[1]] = 1
+        for k in range(first[0]-second[0]):
+            tribe_map[first[0]-k-1][first[1]+k+1] = 1
+        for k in range(second[1]-third[1]):
+            tribe_map[second[0]-1-k][second[1]-1-k] = 1
+        for k in range(third[1]-fourth[1]):
+            tribe_map[third[0]+1+k][third[1]-1-k] = 1
+        for k in range(first[1]-fourth[1]):
+            tribe_map[fourth[0]+1+k][fourth[1]+1+k] = 1
+        for k in range(third[0]+1,first[0]):
+            flag = 0
+            for q in range(map_size):
+                if(tribe_map[k][q] == 1 and flag == 0):
+                    flag = 1
+                elif(tribe_map[k][q]==0 and flag == 1):
+                    tribe_map[k][q] = 1
+                elif(tribe_map[k][q]==1 and flag ==1 ):
+                    flag = 0
         left_flag = 2
         right_flag = 3
         for k in range(map_size):
@@ -59,6 +72,10 @@ def cal(data):
             min_diff = max(population) -min(population)
         elif(min_diff > max(population)-min(population)):
             min_diff = max(population) - min(population)
+            if(min_diff==30):
+                for mm in tribe_map:
+                    print(mm)
+        
     return min_diff
                     
 
